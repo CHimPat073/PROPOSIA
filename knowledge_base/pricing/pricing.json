@@ -1,0 +1,16 @@
+{
+  "roles": {
+    "backend_developer": {
+      "hourly_rate": 1800
+    },
+    "frontend_developer": {
+      "hourly_rate": 1600
+    },
+    "ml_engineer": {
+      "hourly_rate": 2200
+    },
+    "cloud_engineer": {
+      "hourly_rate": 2000
+    }
+  }
+}
