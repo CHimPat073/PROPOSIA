@@ -2,7 +2,12 @@ import json
 import logging
 from pathlib import Path
 from typing import Callable
-from .metadata import create_metadata
+
+try:
+    from .metadata import create_metadata
+except ImportError:  
+    from metadata import create_metadata
+
 from langchain_core.documents import Document
 from langchain_community.document_loaders import CSVLoader, PyPDFLoader, TextLoader
 

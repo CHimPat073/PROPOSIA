@@ -4,10 +4,11 @@ DOCUMENT_TYPE_MAP = {
     "company": "company_information",
     "capabilities": "capability",
     "case_studies": "case_study",
-    "pricing": "pricing"
+    "pricing": "pricing",
 }
 
-def create_metadata(file_path: Path) -> dict:
+
+def create_metadata(file_path: Path) -> dict[str, str]:
 
     category = file_path.parent.name
 
@@ -15,6 +16,6 @@ def create_metadata(file_path: Path) -> dict:
         "source": str(file_path),
         "file_name": file_path.name,
         "category": file_path.parent.name,
-        "document_type":DOCUMENT_TYPE_MAP.get(category, "unknown")
+        "document_type": DOCUMENT_TYPE_MAP.get(category, "unknown"),
     }
     return metadata
