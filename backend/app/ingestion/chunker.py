@@ -38,10 +38,10 @@ if __name__ == "__main__":
         print("\nContent:")
         print(chunk.page_content)
 
-source_counts = Counter(
-    chunk.metadata.get("source")
-    for chunk in chunks
-)
+    source_counts = Counter(
+        chunk.metadata.get("source")
+        for chunk in chunks
+    )
 
-for source, count in source_counts.items():
-    print(f"{source} → {count} chunks")
+    for source, count in source_counts.items():
+        print(f"{source} -> {count} chunks")
