@@ -194,7 +194,6 @@ class ProposalVectorStore:
 
     def search_by_text(
         self,
-        query_text: str,
         query_embedding: list[float],
         k: int = 3,
     ) -> list[dict[str, Any]]:
