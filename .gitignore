@@ -3,3 +3,5 @@
 .pdf
 .lock
 .sqlite3
+
+backend/database/chroma/

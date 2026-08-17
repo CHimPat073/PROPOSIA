@@ -22,7 +22,8 @@ dependencies = [
 ]
 
 [project.scripts]
-rag-support = "rag_support:main"
+rag-support = "backend.app.cli:main"
+rag-verify = "backend.app.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.0,<0.13.0"]

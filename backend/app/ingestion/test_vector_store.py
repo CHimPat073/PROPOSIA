@@ -8,15 +8,21 @@ from __future__ import annotations
 
 import logging
 from pathlib import Path
-
-from backend.app.ingestion.chunker import split_documents
-from backend.app.ingestion.embedder import (
-    initialize_embedding_model,
-    embed_chunks,
-)
-from backend.app.ingestion.ingest_to_chroma import assign_chunk_indices
-from backend.app.ingestion.loader import load_documents
-from backend.app.database.vector_store import ProposalVectorStore
+try:
+    from backend.app.ingestion.chunker import split_documents
+    from backend.app.ingestion.embedder import (
+        initialize_embedding_model,
+        embed_chunks,
+    )
+    from backend.app.ingestion.ingest_to_chroma import assign_chunk_indices
+    from backend.app.ingestion.loader import load_documents
+    from backend.app.database.vector_store import ProposalVectorStore
+except ModuleNotFoundError:  # pragma: no cover
+    from chunker import split_documents
+    from embedder import initialize_embedding_model, embed_chunks
+    from ingest_to_chroma import assign_chunk_indices
+    from loader import load_documents
+    from database.vector_store import ProposalVectorStore    
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
 LOGGER = logging.getLogger("test_vector_store")
@@ -48,7 +54,7 @@ def main() -> None:
     print(f"Chroma records: {store.count()}")
     print(f"Newly inserted this run: {inserted}")
 
-    query_text = "Has the company worked on demand forecasting?"
+    query_text = "Does the company have experience with data engineering and cloud solutions?"
     query_embedding = model.encode(
         query_text, normalize_embeddings=True, convert_to_numpy=True
     ).tolist()
