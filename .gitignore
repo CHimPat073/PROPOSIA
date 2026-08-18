@@ -1,10 +1,11 @@
 .venv
 .env
 .pdf
-.lock
+*.lock
 .sqlite3
 __pycache__/
 *.pyc
+*.toml
 
 backend/database/chroma/
 data/rfps
