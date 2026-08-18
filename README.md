@@ -1,61 +1,20 @@
-# RAG Support
+"""# Proposia
 
-RAG pipeline for an AI Sales Proposal Generator. Loads company knowledge from
-`knowledge_base/`, chunks it, embeds it with `BAAI/bge-small-en-v1.5`, and stores
-it in a local ChromaDB collection. Provides a single CLI for ingesting and
-querying.
+## AI-Powered RFP & Sales Proposal Copilot
 
-## Layout
+> Turn client RFPs into grounded, professional sales proposals using your company's own knowledge base.
 
-```
-backend/
-  app/
-    cli.py              # single CLI entry point (ingest / query / verify / info)
-    ingestion/          # loader, chunker, embedder, ingest pipeline
-    database/           # chroma vector store wrapper
-knowledge_base/         # source documents (.md, .json)
-verify_chunks.py        # legacy wrapper -> `rag-support verify`
-```
+Proposia is a practical RAG-based sales engineering application that helps businesses respond to Requests for Proposals (RFPs) faster and more consistently.
 
-## Setup
+Instead of asking an LLM to invent a proposal from scratch, Proposia first processes the client's requirements, retrieves relevant information from the company's private knowledge base, and uses that grounded context to generate a proposal.
 
-```bash
-uv sync
-# or: pip install -r requirements.txt
-cp .env.example .env   # optional, only needed for HF_TOKEN
-```
+It supports both **PDF RFPs** and **plain-text RFPs**, with a chatbot-style workflow for follow-up revisions.
 
-## Usage
+---
 
-All commands are run from the project root.
+## Why Proposia?
 
-```bash
-# 1. Ingest the knowledge base into ChromaDB (idempotent)
-python -m backend.app.cli ingest
+A basic RAG demo often looks like:
 
-# 2. Ask a question
-python -m backend.app.cli query -q "Does the company have experience with data engineering and cloud solutions?" -k 5
-
-# 3. End-to-end verify: ingest + counts + one sanity query
-python -m backend.app.cli verify
-
-# 4. Show collection stats
-python -m backend.app.cli info
-```
-
-Equivalent console scripts (after `uv sync`):
-
-```bash
-rag-support ingest
-rag-support query -q "..."
-rag-verify
-```
-
-## Expected output (verify)
-
-```
-Documents          : 12
-Chunks             : 27
-Embeddings         : 27 (dim=384)
-Chroma total       : 27
-```
+```text
+PDF -> Chunk -> Embed -> Vector DB -> Question -> Answer
