@@ -10,3 +10,4 @@ python-dotenv
 langchain_groq
 sentence-transformers
 qdrant-client
+streamlit
