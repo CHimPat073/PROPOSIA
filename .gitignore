@@ -3,6 +3,8 @@
 .pdf
 .lock
 .sqlite3
+__pycache__/
+*.pyc
 
 backend/database/chroma/
 data/rfps
