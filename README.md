@@ -362,7 +362,7 @@ Proposia/
 ## 1. Clone the repository
 
 ``` bash
-git clone <your-repository-url>
+git clone https://github.com/CHimPat073/PROPOSIA.git
 cd Proposia
 ```
 
