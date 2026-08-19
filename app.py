@@ -45,7 +45,7 @@ from backend.app.rfp.processor import process_rfp  # noqa: E402
 logging.basicConfig(level=logging.WARNING, format="%(levelname)s | %(message)s")
 
 st.set_page_config(
-    page_title="AI Sales Proposal Generator",
+    page_title="Proposia",
     page_icon=":memo:",
     layout="wide",
 )
@@ -99,7 +99,7 @@ tab_proposal, tab_chat = st.tabs(["RFP Input", "Chatbot"])
 # ============ TAB 1: RFP INPUT ============================================ #
 
 with tab_proposal:
-    st.title("AI Sales Proposal Generator")
+    st.title("Proposia")
     st.caption("Upload an RFP PDF or paste text. The system retrieves company KB context and drafts a grounded proposal.")
 
     input_mode = st.radio(
@@ -213,7 +213,7 @@ def _run_one_chat_turn(
 # ============ TAB 2: CHATBOT ============================================== #
 
 with tab_chat:
-    st.title("Proposal chatbot")
+    st.title("Proposia Chatbot")
     st.caption("Ask follow-up questions about the generated proposal. Answers are grounded in the same KB context.")
 
     result = st.session_state["proposal_result"]

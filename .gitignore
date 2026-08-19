@@ -3,7 +3,7 @@
 .pdf
 *.lock
 .sqlite3
-__pycache__/
+backend/__pycache__/
 *.pyc
 *.toml
 
